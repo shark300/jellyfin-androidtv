@@ -2,7 +2,6 @@ package org.jellyfin.androidtv.preference
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import org.jellyfin.androidtv.preference.UserPreferences.Companion.screensaverInAppEnabled
 import org.jellyfin.androidtv.preference.constant.AVCLevel
 import org.jellyfin.androidtv.preference.constant.AppTheme
 import org.jellyfin.androidtv.preference.constant.AudioBehavior
@@ -10,6 +9,7 @@ import org.jellyfin.androidtv.preference.constant.BackdropBehavior
 import org.jellyfin.androidtv.preference.constant.BitstreamAudioMode
 import org.jellyfin.androidtv.preference.constant.BufferLength
 import org.jellyfin.androidtv.preference.constant.ClockBehavior
+import org.jellyfin.androidtv.preference.constant.MaxDirectPlayResolution
 import org.jellyfin.androidtv.preference.constant.HEVCLevel
 import org.jellyfin.androidtv.preference.constant.HdrOverrideMode
 import org.jellyfin.androidtv.preference.constant.NextUpBehavior
@@ -117,6 +117,11 @@ class UserPreferences(context: Context) : SharedPreferenceStore(
 		 * User defined HEVC level override. AUTO uses device-reported capabilities.
 		 */
 		var userHEVCLevel = enumPreference("user_hevc_level", HEVCLevel.AUTO)
+
+		/**
+		 * Maximum resolution accepted for DirectPlay playback. AUTO uses device-reported capabilities.
+		 */
+		var maxDirectPlayResolution = enumPreference("max_direct_play_resolution", MaxDirectPlayResolution.AUTO)
 
 		/**
 		 * Playback buffer size preset.

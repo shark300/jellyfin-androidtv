@@ -9,6 +9,7 @@ import org.jellyfin.androidtv.preference.constant.BitstreamAudioFormat
 import org.jellyfin.androidtv.preference.constant.BitstreamAudioMode
 import org.jellyfin.androidtv.preference.constant.HdrFormat
 import org.jellyfin.androidtv.preference.constant.HdrOverrideMode
+import org.jellyfin.androidtv.preference.constant.MaxDirectPlayResolution
 import org.jellyfin.androidtv.util.profile.codec.isPassthroughAudioAvailable
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.CodecType
@@ -106,6 +107,7 @@ fun createDeviceProfile(
 	pgsDirectPlay = userPreferences[UserPreferences.pgsDirectPlay],
 	userAVCLevel = userPreferences[UserPreferences.userAVCLevel].level,
 	userHEVCLevel = userPreferences[UserPreferences.userHEVCLevel].level,
+	maxDirectPlayResolution = userPreferences[UserPreferences.maxDirectPlayResolution],
 	forceEnabledHdr = userPreferences.getHdrRangeTypesFor(HdrOverrideMode.ENABLE),
 	forceDisabledHdr = userPreferences.getHdrRangeTypesFor(HdrOverrideMode.DISABLE),
 )
@@ -122,6 +124,7 @@ fun createDeviceProfile(
 	pgsDirectPlay: Boolean,
 	userAVCLevel: Int?,
 	userHEVCLevel: Int?,
+	maxDirectPlayResolution: MaxDirectPlayResolution,
 	forceEnabledHdr: Set<VideoRangeType>,
 	forceDisabledHdr: Set<VideoRangeType>
 ) = buildDeviceProfile {
@@ -421,8 +424,8 @@ fun createDeviceProfile(
 		codec = Codec.Video.H264
 
 		conditions {
-			ProfileConditionValue.WIDTH lowerThanOrEquals maxResolutionAVC.width
-			ProfileConditionValue.HEIGHT lowerThanOrEquals maxResolutionAVC.height
+			ProfileConditionValue.WIDTH lowerThanOrEquals (maxDirectPlayResolution.maxWidth?.let { minOf(maxResolutionAVC.width, it) } ?: maxResolutionAVC.width)
+			ProfileConditionValue.HEIGHT lowerThanOrEquals (maxDirectPlayResolution.maxHeight?.let { minOf(maxResolutionAVC.height, it) } ?: maxResolutionAVC.height)
 		}
 	}
 
@@ -432,8 +435,8 @@ fun createDeviceProfile(
 		codec = Codec.Video.HEVC
 
 		conditions {
-			ProfileConditionValue.WIDTH lowerThanOrEquals maxResolutionHevc.width
-			ProfileConditionValue.HEIGHT lowerThanOrEquals maxResolutionHevc.height
+			ProfileConditionValue.WIDTH lowerThanOrEquals (maxDirectPlayResolution.maxWidth?.let { minOf(maxResolutionHevc.width, it) } ?: maxResolutionHevc.width)
+			ProfileConditionValue.HEIGHT lowerThanOrEquals (maxDirectPlayResolution.maxHeight?.let { minOf(maxResolutionHevc.height, it) } ?: maxResolutionHevc.height)
 		}
 	}
 
@@ -443,8 +446,8 @@ fun createDeviceProfile(
 		codec = Codec.Video.AV1
 
 		conditions {
-			ProfileConditionValue.WIDTH lowerThanOrEquals maxResolutionAV1.width
-			ProfileConditionValue.HEIGHT lowerThanOrEquals maxResolutionAV1.height
+			ProfileConditionValue.WIDTH lowerThanOrEquals (maxDirectPlayResolution.maxWidth?.let { minOf(maxResolutionAV1.width, it) } ?: maxResolutionAV1.width)
+			ProfileConditionValue.HEIGHT lowerThanOrEquals (maxDirectPlayResolution.maxHeight?.let { minOf(maxResolutionAV1.height, it) } ?: maxResolutionAV1.height)
 		}
 	}
 
@@ -454,8 +457,8 @@ fun createDeviceProfile(
 		codec = Codec.Video.VC1
 
 		conditions {
-			ProfileConditionValue.WIDTH lowerThanOrEquals maxResolutionVC1.width
-			ProfileConditionValue.HEIGHT lowerThanOrEquals maxResolutionVC1.height
+			ProfileConditionValue.WIDTH lowerThanOrEquals (maxDirectPlayResolution.maxWidth?.let { minOf(maxResolutionVC1.width, it) } ?: maxResolutionVC1.width)
+			ProfileConditionValue.HEIGHT lowerThanOrEquals (maxDirectPlayResolution.maxHeight?.let { minOf(maxResolutionVC1.height, it) } ?: maxResolutionVC1.height)
 		}
 	}
 

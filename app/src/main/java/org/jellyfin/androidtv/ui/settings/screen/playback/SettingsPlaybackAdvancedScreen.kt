@@ -213,6 +213,17 @@ fun SettingsPlaybackAdvancedScreen() {
 			)
 		}
 
+		item {
+			var maxDirectPlayResolution by rememberPreference(userPreferences, UserPreferences.maxDirectPlayResolution)
+
+			ListButton(
+				headingContent = { Text(stringResource(R.string.preference_max_direct_play_resolution)) },
+				captionContent = { Text(stringResource(maxDirectPlayResolution.nameRes)) },
+				onClick = { router.push(Routes.PLAYBACK_MAX_DIRECT_PLAY_RESOLUTION) },
+				modifier = Modifier.focusKey(Routes.PLAYBACK_MAX_DIRECT_PLAY_RESOLUTION)
+			)
+		}
+
 		item { ListSection(headingContent = { Text(stringResource(R.string.pref_subtitles)) }) }
 
 		item {

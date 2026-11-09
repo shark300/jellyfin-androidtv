@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import org.jellyfin.androidtv.R
 import org.jellyfin.androidtv.preference.UserPreferences
+import org.jellyfin.androidtv.preference.constant.MaxDirectPlayResolution
 import org.jellyfin.androidtv.preference.constant.BitstreamAudioFormat
 import org.jellyfin.androidtv.ui.base.Text
 import org.jellyfin.androidtv.ui.base.form.Checkbox

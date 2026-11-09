@@ -699,4 +699,11 @@
     <string name="truehd">TrueHD</string>
     <string name="eac3_atmos">DD+ Atmos</string>
     <string name="truehd_atmos">TrueHD Atmos</string>
+    <string name="preference_max_direct_play_resolution">Direct play maximum resolution</string>
+    <string name="preference_max_direct_play_resolution_summary">Limit direct video playback by resolution. Higher-resolution videos may be transcoded by the server.</string>
+    <string name="max_direct_play_resolution_auto">Automatic</string>
+    <string name="max_direct_play_resolution_720p">720p</string>
+    <string name="max_direct_play_resolution_1080p">1080p</string>
+    <string name="max_direct_play_resolution_1440p">1440p</string>
+    <string name="max_direct_play_resolution_2160p">2160p (4K)</string>
 </resources>

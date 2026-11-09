@@ -35,6 +35,7 @@ import org.jellyfin.androidtv.ui.settings.screen.livetv.SettingsLiveTvGuideChann
 import org.jellyfin.androidtv.ui.settings.screen.livetv.SettingsLiveTvGuideFiltersScreen
 import org.jellyfin.androidtv.ui.settings.screen.livetv.SettingsLiveTvGuideOptionsScreen
 import org.jellyfin.androidtv.ui.settings.screen.playback.SettingsPlaybackAVCLevelScreen
+import org.jellyfin.androidtv.ui.settings.screen.playback.SettingsPlaybackMaxDirectPlayResolutionScreen
 import org.jellyfin.androidtv.ui.settings.screen.playback.SettingsPlaybackAdvancedScreen
 import org.jellyfin.androidtv.ui.settings.screen.playback.SettingsPlaybackAudioBehaviorScreen
 import org.jellyfin.androidtv.ui.settings.screen.playback.SettingsPlaybackBitstreamAudioScreen
@@ -114,6 +115,7 @@ object Routes {
 	const val PLAYBACK_CODEC = "/playback/codec"
 	const val PLAYBACK_BITSTREAM_AUDIO = "/playback/codec/bitstream-audio/{format}"
 	const val PLAYBACK_AVC_LEVEL = "/playback/codec/avc-level"
+	const val PLAYBACK_MAX_DIRECT_PLAY_RESOLUTION = "/playback/max-direct-play-resolution"
 	const val PLAYBACK_HEVC_LEVEL = "/playback/codec/hevc-level"
 	const val TELEMETRY = "/telemetry"
 	const val DEVELOPER = "/developer"
@@ -292,6 +294,9 @@ val routes = mapOf<String, RouteComposable>(
 	},
 	Routes.PLAYBACK_AVC_LEVEL to {
 		SettingsPlaybackAVCLevelScreen()
+	},
+	Routes.PLAYBACK_MAX_DIRECT_PLAY_RESOLUTION to {
+		SettingsPlaybackMaxDirectPlayResolutionScreen()
 	},
 	Routes.PLAYBACK_HEVC_LEVEL to {
 		SettingsPlaybackHEVCLevelScreen()
